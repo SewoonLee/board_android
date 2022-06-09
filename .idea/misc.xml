@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/bon300_3/Documents/GitHub/board_android/app/src/main/res/layout/activity_detail.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/bon300_3/Documents/GitHub/board_android/app/src/main/res/layout/activity_join.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/bon300_3/Documents/GitHub/board_android/app/src/main/res/layout/activity_list.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/bon300_3/Documents/GitHub/board_android/app/src/main/res/layout/activity_login.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/bon300_3/Documents/GitHub/board_android/app/src/main/res/layout/activity_register.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/bon300_3/Documents/GitHub/board_android/app/src/main/res/layout/custom_comment.xml" value="0.36614583333333334" />
         <entry key="app/src/main/res/layout/activity_detail.xml" value="0.16530797101449277" />
         <entry key="app/src/main/res/layout/activity_join.xml" value="0.16530797101449277" />
         <entry key="app/src/main/res/layout/activity_list.xml" value="0.16530797101449277" />
