@@ -15,12 +15,14 @@ import retrofit2.Response
 class MainViewModel: ViewModel() {
     val error = MutableLiveData<String>()
     val board = MutableLiveData<Board>()
-    lateinit var request: Call<Board>
+    val all_board = MutableLiveData<List<Board>>()
+    lateinit var request_board: Call<Board>
+    lateinit var request_all_board: Call<List<Board>>
 
 
     fun getBoard(id: Int) = viewModelScope.launch {
-        request = JsServer.boardApi.getBoard(id)
-        request.enqueue(object:Callback<Board>{
+        request_board = JsServer.boardApi.getBoard(id)
+        request_board.enqueue(object:Callback<Board>{
             override fun onResponse(call: Call<Board>, response: Response<Board>) {
                 board.value = response.body()
                 Log.d("RESPONSE", "Response: ${response.code()}")
@@ -33,8 +35,24 @@ class MainViewModel: ViewModel() {
         })
     }
 
+    fun getBoard() = viewModelScope.launch {
+        request_all_board = JsServer.boardApi.getAllBoard()
+        request_all_board.enqueue(object:Callback<List<Board>>{
+            override fun onResponse(call: Call<List<Board>>, response: Response<List<Board>>) {
+                all_board.value = response.body()
+                Log.d("RESPONSE", "Response: ${response.code()}")
+            }
+
+            override fun onFailure(call: Call<List<Board>>, t: Throwable) {
+                error.value = t.localizedMessage
+                Log.d("ERROR", "Error: ${error.value.toString()}")
+            }
+        })
+
+    }
+
     override fun onCleared() {
         super.onCleared()
-        if(::request.isInitialized) request.cancel()
+        if(::request_board.isInitialized) request_board.cancel()
     }
 }

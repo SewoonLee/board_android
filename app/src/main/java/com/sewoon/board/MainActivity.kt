@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.sewoon.board.databinding.ActivityMainBinding
@@ -12,18 +13,24 @@ import com.sewoon.board.volley.SingletonQueue
 
 class MainActivity : AppCompatActivity() {
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
-    private val viewModel by viewModels<MainViewModel>()
+//    private val viewModel by viewModels<MainViewModel>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
+        val viewModel:MainViewModel by viewModels()
 
         viewModel.board.observe(this){
-            Log.d("RESPONSE", it.content)
+            Log.d("RESPONSE", it.toString())
+        }
+
+        viewModel.all_board.observe(this) {
+            Log.d("RESPONSE", it.toString())
         }
 
         viewModel.getBoard(1)
+        viewModel.getBoard()
 
     }
 }
