@@ -14,12 +14,17 @@ class BoardAdapter:RecyclerView.Adapter<BoardAdapter.BoardViewHolder>() {
 
     private var data:List<Board> = listOf()
 
-    @SuppressLint("NotifyDataSetChanged")
     fun setData(data:List<Board>) {
         this.data = data
         Log.d("setData", data.toString())
         notifyDataSetChanged()
     }
+
+    fun getData(): List<Board> {
+        return this.data
+    }
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BoardViewHolder {
         val view = LayoutInflater
@@ -36,6 +41,8 @@ class BoardAdapter:RecyclerView.Adapter<BoardAdapter.BoardViewHolder>() {
     }
 
     override fun getItemCount(): Int {
+
+        Log.d("Data", "${this.data.size}개")
         return this.data.size
     }
 

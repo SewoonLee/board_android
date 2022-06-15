@@ -13,10 +13,6 @@
         android:theme="@style/Theme.Board"
         android:usesCleartextTraffic="true">
 
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".DetailActivity" />
-        <activity android:name=".ListActivity" />
-
         <activity
             android:name=".MainActivity"
             android:exported="true">

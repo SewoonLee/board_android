@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class JsServer {
     companion object{
-        var gsonBuilder = GsonBuilder()
+//        var gsonBuilder = GsonBuilder()
         private const val url = "http://10.0.2.2:8080/api/"
         private var server:Retrofit=Retrofit.Builder()
             .baseUrl(url)

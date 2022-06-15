@@ -2,14 +2,11 @@ package com.sewoon.board
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.Log
 import androidx.activity.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.android.volley.Request
-import com.android.volley.toolbox.JsonObjectRequest
 import com.sewoon.board.databinding.ActivityMainBinding
-import com.sewoon.board.volley.SingletonQueue
+import com.sewoon.board.model.Board
+import com.sewoon.board.ui.ListFragment
 
 class MainActivity : AppCompatActivity() {
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
@@ -29,8 +26,14 @@ class MainActivity : AppCompatActivity() {
             Log.d("RESPONSE", it.toString())
         }
 
+
         viewModel.getBoard(1)
         viewModel.getBoard()
 
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        ListFragment().refreshAdapter()
     }
 }

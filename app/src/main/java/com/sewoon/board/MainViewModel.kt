@@ -15,16 +15,40 @@ import retrofit2.Response
 class MainViewModel: ViewModel() {
     val error = MutableLiveData<String>()
     val board = MutableLiveData<Board>()
+    val currentBoard = MutableLiveData<Board>()
+
     val all_board = MutableLiveData<List<Board>>()
     lateinit var request_board: Call<Board>
     lateinit var request_all_board: Call<List<Board>>
+    lateinit var request_post_board: Call<String>
 
+    fun setCurrentBoard(board:Board) = viewModelScope.launch {
+        currentBoard.value = board
+    }
+
+    fun getCurrentBoard(board:Board):Board? {
+        return currentBoard.value
+    }
+
+
+    fun postBoard(board: Board) = viewModelScope.launch {
+        request_post_board = JsServer.boardApi.postBoard(board)
+        request_post_board.enqueue(object:Callback<String>{
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                Log.d("POST", "POST result: ${response.body()}")
+            }
+
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                Log.d("POST", "ERROR ${error.value.toString()}")
+            }
+        })
+    }
 
     fun getBoard(id: Int) = viewModelScope.launch {
         request_board = JsServer.boardApi.getBoard(id)
         request_board.enqueue(object:Callback<Board>{
             override fun onResponse(call: Call<Board>, response: Response<Board>) {
-                board.value = response.body()
+                currentBoard.value = response.body()
                 Log.d("RESPONSE", "Response: ${response.code()}")
             }
 
@@ -48,7 +72,7 @@ class MainViewModel: ViewModel() {
                 Log.d("ERROR", "Error: ${error.value.toString()}")
             }
         })
-
+        
     }
 
     override fun onCleared() {

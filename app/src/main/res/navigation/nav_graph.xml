@@ -22,7 +22,11 @@
         android:id="@+id/writeFragment"
         android:name="com.sewoon.board.ui.WriteFragment"
         android:label="write_fragment"
-        tools:layout="@layout/write_fragment" />
+        tools:layout="@layout/write_fragment" >
+        <action
+            android:id="@+id/action_writeFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/detailFragment"
