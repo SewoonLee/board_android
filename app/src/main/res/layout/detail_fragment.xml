@@ -5,9 +5,88 @@
     android:layout_height="match_parent"
     tools:context=".ui.DetailFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="DetailFragment" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:text="제목"/>
+
+                    <TextView
+                        android:id="@+id/title_tv"
+                        android:padding="16dp"
+                        android:background="#eeeeee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="제목입니다."
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:text="작성일"/>
+
+                    <TextView
+                        android:id="@+id/date_tv"
+                        android:padding="16dp"
+                        android:background="#eeeeee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="제목입니다."
+                        />
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="내용"/>
+
+                <TextView
+                    android:id="@+id/content_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="348dp"
+                    android:background="#eeeeee"
+                    android:padding="16dp"
+                    android:text="내용입니다." />
+
+                <Button
+                    android:id="@+id/rewrite_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="수정하기" />
+                <Button
+                    android:id="@+id/return_list_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="목록으로" />
+
+            </LinearLayout>
+        </ScrollView>
+
+
 
 </FrameLayout>

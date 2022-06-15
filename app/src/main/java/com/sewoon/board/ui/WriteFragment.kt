@@ -15,6 +15,9 @@ import com.sewoon.board.databinding.WriteFragmentBinding
 import com.sewoon.board.model.Board
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.util.*
 
 class WriteFragment : Fragment() {
     private var _binding:WriteFragmentBinding? = null
@@ -37,10 +40,12 @@ class WriteFragment : Fragment() {
             } else {
                 Toast.makeText(this.context, "${binding.titleEt.text}", Toast.LENGTH_SHORT).show()
 
+                val createAt: Date = Date()
                 val board:Board = Board(null, binding.titleEt.text.toString(), binding.contentEt.text.toString(), null, null, null, binding.pwEt.text.toString())
-
+                val currentBoard:Board = Board(null, binding.titleEt.text.toString(), binding.contentEt.text.toString(), null, createAt, null, binding.pwEt.text.toString())
                 viewModel.postBoard(board)
                 viewModel.getBoard()
+                viewModel.setCurrentBoard(currentBoard)
 
                 findNavController().navigate(R.id.action_writeFragment_to_detailFragment)
             }

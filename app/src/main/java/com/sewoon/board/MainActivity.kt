@@ -23,17 +23,16 @@ class MainActivity : AppCompatActivity() {
         }
 
         viewModel.all_board.observe(this) {
-            Log.d("RESPONSE", it.toString())
+            Log.d("get_board", it.toString())
+        }
+
+        viewModel.currentBoard.observe(this) {
+            Log.d("current_board", it.toString())
         }
 
 
-        viewModel.getBoard(1)
         viewModel.getBoard()
 
     }
 
-    override fun onRestart() {
-        super.onRestart()
-        ListFragment().refreshAdapter()
-    }
 }

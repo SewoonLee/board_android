@@ -19,16 +19,18 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="510dp"
         android:background="@color/white"
         android:clipToPadding="false"
         android:paddingTop="16dp"
         android:scrollbarStyle="outsideOverlay"
         android:scrollbars="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/reg_button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/recent_button"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView"
@@ -45,5 +47,21 @@
         android:background="#C62828"
         app:layout_constraintBottom_toBottomOf="parent"
         android:text="새 글 작성하기" />
+
+    <Button
+        android:id="@+id/most_view_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="조회순 정렬"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/recent_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="작성순 정렬"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

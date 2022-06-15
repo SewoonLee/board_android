@@ -7,7 +7,7 @@ data class Board(
     val title: String?,
     val content:String?,
     val hits:Int?,
-    val created_date:Date?,
+    var created_date:Date?,
     val updated_date:Date?,
     val password:String?
 )

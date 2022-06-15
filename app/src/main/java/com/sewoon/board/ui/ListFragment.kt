@@ -32,18 +32,6 @@ class ListFragment : Fragment() {
         binding.regButton.setOnClickListener {
             findNavController().navigate(R.id.action_listFragment_to_writeFragment)
         }
-        val manager = LinearLayoutManager(activity)
-
-        binding.recyclerView.setHasFixedSize(true)
-        binding.recyclerView.layoutManager = manager
-        binding.recyclerView.adapter = adapter
-
-        viewModel.all_board.observe(viewLifecycleOwner){
-            Log.d("RESPONSE", it.toString())
-            adapter.setData(it)
-        }
-
-
 
 
     }
@@ -53,6 +41,28 @@ class ListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = ListFragmentBinding.inflate(inflater, container, false)
+        viewModel.all_board.observe(viewLifecycleOwner){
+            Log.d("RESPONSE", it.toString())
+            val manager = LinearLayoutManager(activity)
+
+            adapter.setData(it)
+            binding.recyclerView.setHasFixedSize(true)
+            binding.recyclerView.layoutManager = manager
+            binding.recyclerView.adapter = adapter
+            adapter.setListener{ v, position ->
+                viewModel.currentBoard = MutableLiveData(adapter.getItem(position))
+                findNavController().navigate(R.id.action_listFragment_to_detailFragment)
+            }
+        }
+
+        binding.recentButton.setOnClickListener {
+            adapter.sortByDate()
+        }
+
+        binding.mostViewButton.setOnClickListener {
+            adapter.sortByView()
+        }
+
         return binding.root
     }
 
@@ -62,12 +72,5 @@ class ListFragment : Fragment() {
 
     }
 
-    fun refreshAdapter() {
-
-        data = adapter.getData()
-
-        adapter.setData(data)
-        adapter.notifyDataSetChanged()
-    }
 
 }

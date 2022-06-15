@@ -2,10 +2,7 @@ package com.sewoon.board.api
 
 import com.sewoon.board.model.Board
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface BoardApi {
     @GET("board/all")
@@ -16,4 +13,7 @@ interface BoardApi {
 
     @POST("board/new")
     fun postBoard(@Body board:Board):Call<String>
+
+    @PUT("board/update")
+    fun updateBoard(@Body board:Board):Call<String>
 }
